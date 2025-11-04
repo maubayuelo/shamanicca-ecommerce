@@ -6,6 +6,7 @@ import { FEATURED_PRODUCTS_MOCK } from '../../utils/mockProducts';
 import Header from '../../components/organisms/Header';
 import Footer from '../../components/organisms/Footer';
 import ProductsGrid from '../../components/sections/ProductsGrid';
+import ProductImageGallery from '../../components/molecules/ProductImageGallery';
 
 export default function ProductPage() {
   const router = useRouter();
@@ -46,17 +47,7 @@ export default function ProductPage() {
           </nav>
 
           <div className="product__content">
-            <div className="product__media">
-              <div className="product__image-wrapper">
-                {isOnSale && (
-                  <div className="badge badge--sale">
-                    <span>SALE</span>
-                  </div>
-                )}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img} alt={title} />
-              </div>
-            </div>
+            <ProductImageGallery title={title} isOnSale={!!isOnSale} className="product__media" />
 
             <div className="product__details">
               <h1 className="product__title">{title}</h1>
