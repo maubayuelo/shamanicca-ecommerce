@@ -18,7 +18,6 @@ export default function ProductPage() {
   }, [slug]);
 
   const title = product?.name || 'Product';
-  const img = product?.image?.sourceUrl || 'https://placehold.co/1000x1000?text=Product';
   const isOnSale = product && product.regularPrice && product.price < product.regularPrice;
   const price = product?.price ?? 0;
   const regularPrice = product?.regularPrice ?? price;

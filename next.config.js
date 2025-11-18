@@ -3,7 +3,12 @@ module.exports = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   images: {
-    domains: ['your-cdn.com', 'wp-siteground-domain.com', 'source.unsplash.com'],
+    domains: [
+      'your-cdn.com',
+      'wp-siteground-domain.com',
+      'source.unsplash.com',
+      'placehold.co'
+    ],
   },
   env: {
     GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,

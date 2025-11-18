@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 import Paginator from '../molecules/Paginator';
 
 export type FeaturedProduct = {
@@ -143,7 +144,7 @@ function ProductTile({ product }: { product: FeaturedProduct }) {
     <article className="product-tile">
       <Link href={href} aria-label={`View ${name}`} className="image-wrap">
         {onSale && <div className="product-badge type-sm type-bold">SALE</div>}
-        <img src={img} alt={name} loading="lazy" />
+        <Image src={img} alt={name} width={800} height={800} loading="lazy" />
       </Link>
       <div className="info">
         <h3 className="product-name type-lg type-bold mt-sm-responsive  mb-xs-responsive">

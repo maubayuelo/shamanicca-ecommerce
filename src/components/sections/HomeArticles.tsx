@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export type Article = {
   id: string | number;
@@ -43,7 +44,7 @@ function ArticleCard({ article }: { article: Article }) {
   return (
     <article className="article-card">
       <a href={article.href || '#'} className="thumb" aria-label={`Read ${article.title}`}>
-        <img src={img} alt="" loading="lazy" />
+        <Image src={img} alt="" width={345} height={230} loading="lazy" />
       </a>
       <div className="info">
         <h3 className="type-2xl type-extrabold m-0"><a href={article.href || '#'}>{article.title}</a></h3>

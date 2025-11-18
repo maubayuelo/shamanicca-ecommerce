@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import navigation from '../../utils/navigation';
 
@@ -118,7 +119,7 @@ export default function Header() {
       <div className="header__main">
         <div className="main">
           <Link href="/" className="header__logo">
-            <img src="/images/shamanicca-logo.svg" alt="Shamanicca" className="header__logo" />
+            <Image src="/images/shamanicca-logo.svg" alt="Shamanicca" width={160} height={40} className="header__logo" priority />
           </Link>
           <div className="header__container">
             <nav className="header__nav" aria-label="Main navigation">
@@ -147,30 +148,27 @@ export default function Header() {
           </div>
           <div className="header__actions">
             <button aria-label="search" className="header__action_btn" onClick={toggleSearch}>
-              <img src="/images/icon-magnifying-glass.svg" alt="Search" className="header__action_icon" />
+              <Image src="/images/icon-magnifying-glass.svg" alt="Search" width={24} height={24} className="header__action_icon" />
             </button>
             <button aria-label="WishList" className="header__action_btn">
-              
-              {/*<img src="/images/icon-heart.svg" alt="WishList" className="header__action_icon" />*/}
-              <img src="/images/icon-heart.svg" alt="WishList" className="header__action_icon" />
+              <Image src="/images/icon-heart.svg" alt="WishList" width={24} height={24} className="header__action_icon" />
             </button>
             <button aria-label="account" className="header__action_btn">
-              {/*<img src="/images/icon-avatar.svg" alt="Account" className="header__action_icon" />*/}
-              <img src="/images/icon-avatar.svg" alt="Account" className="header__action_icon" />
+              <Image src="/images/icon-avatar.svg" alt="Account" width={24} height={24} className="header__action_icon" />
             </button>
             <button aria-label="cart" className="header__action_btn">
-              {/*<img src="/images/icon-shopping-bag.svg" alt="Cart" className="header__action_icon" />*/}
-              <img src="/images/icon-shopping-bag.svg" alt="Cart" className="header__action_icon" />
+              <Image src="/images/icon-shopping-bag.svg" alt="Cart" width={24} height={24} className="header__action_icon" />
             </button>
             <button
               aria-label="Toggle mobile menu"
               className="header__mobile_toggle"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {/* Use conditional src for open/close icons. Replace shopping-bag with appropriate icons when available. */}
-              <img
-                src={mobileOpen ? '/images/icon-close.svg' : '/images/icon-ham-menu.svg' }
+              <Image
+                src={mobileOpen ? '/images/icon-close.svg' : '/images/icon-ham-menu.svg'}
                 alt={mobileOpen ? 'Close menu' : 'Open menu'}
+                width={28}
+                height={28}
                 className="header__mobile_icon"
               />
             </button>
@@ -244,7 +242,7 @@ export default function Header() {
 
         <div className="header__search_header">
           <button aria-label="Close search" className="header__search_close" onClick={() => setSearchOpen(false)}>
-            <img src="/images/icon-close.svg" alt="Close" />
+            <Image src="/images/icon-close.svg" alt="Close" width={20} height={20} />
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type Props = {
   title: string; // e.g., "Women", "Men", "Accessories"
@@ -24,14 +25,14 @@ export default function StoreSubHeader({ title, onFilterClick, onSortClick }: Pr
       <div className="store-subheader__toolbar">
         <div className="store-subheader__left">
           <button type="button" className="toolbar-btn" onClick={onFilterClick} aria-label="Open filters">
-            <img className="toolbar-icon" src="/images/icons/icon-equalizer.svg" alt="" aria-hidden width={20} height={20} />
+            <Image className="toolbar-icon" src="/images/icons/icon-equalizer.svg" alt="" aria-hidden width={20} height={20} />
             <span className="toolbar-label">Filter</span>
           </button>
         </div>
         <div className="store-subheader__right">
           <button type="button" className="toolbar-btn" onClick={onSortClick} aria-label="Open sort options">
             <span className="toolbar-label">Sort</span>
-            <img className="toolbar-caret" src="/images/icons/icon-chevron-down.svg" alt="" aria-hidden width={20} height={20} />
+            <Image className="toolbar-caret" src="/images/icons/icon-chevron-down.svg" alt="" aria-hidden width={20} height={20} />
           </button>
         </div>
       </div>

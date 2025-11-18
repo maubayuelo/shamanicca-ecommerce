@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 export type PaginatorProps = {
   /** 1-based current page */
@@ -74,12 +75,12 @@ export default function Paginator({
         <li className={`paginator__item mb-0 paginator__prev${prevDisabled ? ' is-disabled' : ''}`}>
           {hrefBuilder ? (
             <Link aria-disabled={prevDisabled} tabIndex={prevDisabled ? -1 : 0} href={hrefBuilder(goPrev)} onClick={prevDisabled ? undefined : handleClick(goPrev)} aria-label="Previous page">
-              <img src="/images/icons/icon-chevron-left.svg" alt="" aria-hidden width={12} height={21} />
+              <Image src="/images/icons/icon-chevron-left.svg" alt="" aria-hidden width={12} height={21} />
               <span className="sr-only">Previous</span>
             </Link>
           ) : (
             <button type="button" aria-label="Previous" disabled={prevDisabled} onClick={handleClick(goPrev)}>
-              <img src="/images/icons/icon-chevron-left.svg" alt="" aria-hidden width={12} height={21} />
+              <Image src="/images/icons/icon-chevron-left.svg" alt="" aria-hidden width={12} height={21} />
             </button>
           )}
         </li>
@@ -119,12 +120,12 @@ export default function Paginator({
         <li className={`paginator__item mb-0 paginator__next${nextDisabled ? ' is-disabled' : ''}`}>
           {hrefBuilder ? (
             <Link aria-disabled={nextDisabled} tabIndex={nextDisabled ? -1 : 0} href={hrefBuilder(goNext)} onClick={nextDisabled ? undefined : handleClick(goNext)} aria-label="Next page">
-              <img src="/images/icons/icon-chevron-right.svg" alt="" aria-hidden width={12} height={21} />
+              <Image src="/images/icons/icon-chevron-right.svg" alt="" aria-hidden width={12} height={21} />
               <span className="sr-only">Next</span>
             </Link>
           ) : (
             <button type="button" aria-label="Next" disabled={nextDisabled} onClick={handleClick(goNext)}>
-              <img src="/images/icons/icon-chevron-right.svg" alt="" aria-hidden width={12} height={21} />
+              <Image src="/images/icons/icon-chevron-right.svg" alt="" aria-hidden width={12} height={21} />
             </button>
           )}
         </li>

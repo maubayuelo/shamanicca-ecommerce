@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -25,7 +26,9 @@ export default function Hero() {
           </div>
         
       </div>
-      <img className="bg-image" src="/images/hero-image.png" alt="Shamanicca Collection" />
+      <div className="bg-image">
+        <Image src="/images/hero-image.png" alt="Shamanicca Collection" fill priority style={{ objectFit: 'cover' }} />
+      </div>
     
     </section>
   );

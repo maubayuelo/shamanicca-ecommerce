@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export type Banner = {
   id: string | number;
@@ -30,12 +31,14 @@ export default function HomeBanners({ banners, className = '' }: Props) {
           aria-label={b.title}
         >
           {b.imageUrl && (
-            <img
+            <Image
               src={b.imageUrl}
               alt=""
-              aria-hidden="true"
+              aria-hidden
               loading="lazy"
               className="banner-card__img"
+              width={1000}
+              height={800}
             />
           )}
           <div className="content">

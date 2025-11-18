@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -19,13 +21,13 @@ export default function Footer() {
               <div className="label type-sm mb-sm-responsive">Catch updates following us on:</div>
               <div className="icons">
                 <a className="icon" href="#" aria-label="Instagram">
-                  <img src="/images/icons/icon-social-ig.svg" alt="Instagram" width={30} height={30} />
+                  <Image src="/images/icons/icon-social-ig.svg" alt="Instagram" width={30} height={30} />
                 </a>
                 <a className="icon" href="#" aria-label="YouTube">
-                  <img src="/images/icons/icon-social-yt.svg" alt="YouTube" width={30} height={30} />
+                  <Image src="/images/icons/icon-social-yt.svg" alt="YouTube" width={30} height={30} />
                 </a>
                 <a className="icon" href="#" aria-label="TikTok">
-                  <img src="/images/icons/icon-social-tt.svg" alt="TikTok" width={30} height={30} />
+                  <Image src="/images/icons/icon-social-tt.svg" alt="TikTok" width={30} height={30} />
                 </a>
               </div>
             </div>
