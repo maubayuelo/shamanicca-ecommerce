@@ -3,51 +3,38 @@ import { useQuery } from '@apollo/client/react';
 import Header from '../components/organisms/Header';
 import Footer from '../components/organisms/Footer';
 import Hero from '../components/sections/Hero';
-import ProductsGrid from '../components/sections/ProductsGrid';
+import ProductsGrid, { type FeaturedProduct } from '../components/sections/ProductsGrid';
 import HomeBanners from '../components/sections/HomeBanners';
 import HomeArticles from '../components/sections/HomeArticles';
 import { FEATURED_PRODUCTS_MOCK } from '../utils/mockProducts';
-import ProductCard from '../components/molecules/ProductCard';
 import { GET_PRODUCTS } from '../lib/graphql/queries';
 
+type ProductFromApi = {
+  id: string;
+  name: string;
+  slug?: string;
+  price?: string | number | null;
+  shortDescription?: string | null;
+  image?: { sourceUrl?: string | null } | null;
+};
+
+type GetProductsData = {
+  products?: { nodes?: ProductFromApi[] };
+};
+
+type GetProductsVars = { first?: number };
+
 export default function Home() {
-  const { data, loading, error } = useQuery(GET_PRODUCTS, { variables: { first: 12 } });
-  const products = (data as any)?.products?.nodes ?? [];
+  const { data } = useQuery<GetProductsData, GetProductsVars>(GET_PRODUCTS, { variables: { first: 12 } });
+  const products = data?.products?.nodes ?? [];
   const FEATURED_CATEGORY = 'Featured Products';
   // Choose products for Home: prefer API data (no categories in current query), otherwise mock filtered by Featured category.
-  const displayProducts = products.length > 0
-    ? products.slice(0, 6)
-    : (FEATURED_PRODUCTS_MOCK.filter((p: any) => Array.isArray(p.categories) && p.categories.includes(FEATURED_CATEGORY)).slice(0, 6)
-        || FEATURED_PRODUCTS_MOCK.slice(0, 6));
-
-  // Debug: log imported component identities
-  // eslint-disable-next-line no-console
-  console.log('[index] Components:', {
-    Header: Header ? (Header as any).name || typeof Header : 'undefined',
-    Footer: Footer ? (Footer as any).name || typeof Footer : 'undefined',
-    Hero: Hero ? (Hero as any).name || typeof Hero : 'undefined',
-    ProductCard: ProductCard ? (ProductCard as any).name || typeof ProductCard : 'undefined',
-  });
-
-  // Strict runtime assertions to fail fast with a useful message
-  const assertValid = (name: string, comp: any) => {
-    if (comp == null) throw new Error(`Component ${name} is undefined`);
-    const t = typeof comp;
-    if (!(t === 'function' || t === 'object')) {
-      throw new Error(`Component ${name} has invalid type: ${t} (${String(comp)})`);
-    }
-  };
-
-  try {
-    assertValid('Header', Header);
-    assertValid('Footer', Footer);
-    assertValid('Hero', Hero);
-    assertValid('ProductCard', ProductCard);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error('[index] Component assertion failed:', err);
-    throw err;
-  }
+  type FeaturedMock = FeaturedProduct & { categories?: string[] };
+  const MOCK: FeaturedMock[] = FEATURED_PRODUCTS_MOCK as unknown as FeaturedMock[];
+  const displayProducts: FeaturedProduct[] = products.length > 0
+    ? (products as FeaturedProduct[]).slice(0, 6)
+    : (MOCK.filter((p) => Array.isArray(p.categories) && p.categories!.includes(FEATURED_CATEGORY)).slice(0, 6)
+        || MOCK.slice(0, 6));
 
   return (
     <>

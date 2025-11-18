@@ -10,7 +10,17 @@ try {
   console.error('[ProductCard] Error logging imported components', e);
 }
 
-export default function ProductCard({ product }: { product: any }) {
+type ProductCardProduct = {
+  id?: string | number;
+  name: string;
+  slug?: string;
+  image?: { sourceUrl?: string } | null;
+  price?: string | number | null;
+  regularPrice?: string | number | null;
+  shortDescription?: string | null;
+};
+
+export default function ProductCard({ product }: { product: ProductCardProduct }) {
   const img = product?.image?.sourceUrl || '/placeholder.png';
   const price = product?.price || product?.regularPrice || '—';
   return (

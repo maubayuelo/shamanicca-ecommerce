@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -8,18 +10,18 @@ export default function Hero() {
           <p className="type-4xl type-4xl mt-0 mb-md-responsive type-extrabold">Intentioned Mystical Style</p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center">
-            <a
+            <Link
               href="/shop/women"
               className="btn btn-white btn-medium"
             >
-              SHOP WOMEN'S
-            </a>
-            <a
+              SHOP WOMEN’S
+            </Link>
+            <Link
               href="/shop/men"
               className="btn btn-white ml-30 btn-medium"
             >
-              SHOP MEN'S
-            </a>
+              SHOP MEN’S
+            </Link>
           </div>
         
       </div>
