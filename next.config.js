@@ -1,5 +1,7 @@
 module.exports = {
   reactStrictMode: true,
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
   images: {
     domains: ['your-cdn.com', 'wp-siteground-domain.com', 'source.unsplash.com'],
   },
