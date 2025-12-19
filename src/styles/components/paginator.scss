@@ -53,7 +53,10 @@
       font-weight: inherit;
       line-height: inherit;
       cursor: pointer;
-      transition: background-color 120ms ease, color 120ms ease, opacity 120ms ease;
+      transition:
+        background-color 120ms ease,
+        color 120ms ease,
+        opacity 120ms ease;
     }
 
     button:disabled {

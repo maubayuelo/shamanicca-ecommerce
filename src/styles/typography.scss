@@ -198,6 +198,9 @@ $line-heights-phone: (
 .type-extrabold {
     font-weight: map.get($font-weights, extrabold);
 }
+.type-italic {
+    font-style: italic;
+}
 
 // Optional: enable antialiasing separately (so smoothing isn't mixed with size/weight)
 .type-antialiased {

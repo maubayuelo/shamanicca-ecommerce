@@ -8,22 +8,26 @@ export type BlogBannerProps = {
   href?: string;
   imageUrl: string;
   className?: string;
+  isAffilliated?: boolean;
 };
 
-export default function BlogBanner({ title, subtitle, ctaLabel, href = '#', imageUrl, className = '' }: BlogBannerProps) {
+export default function BlogBanner({ title, subtitle, ctaLabel, href = '#', imageUrl, className = '', isAffilliated = false }: BlogBannerProps) {
   return (
-    <div className={`blog-banner ${className}`}>
+    <a href={href} className={`blog-banner${isAffilliated ? ' is-affilliated' : ''} ${className}`}>
       <div className="blog-banner__image">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={imageUrl} alt={title} />
       </div>
       <div className="blog-banner__body">
         <div className="blog-banner__title type-2xl type-extrabold">{title}</div>
-        {subtitle && <div className="blog-banner__subtitle type-lg">{subtitle}</div>}
+        {subtitle && <div className="blog-banner__subtitle type-sm mb-0">{subtitle}</div>}
+        {isAffilliated && (
+          <div className="type-xs mt-0 type-italic" aria-label="Affiliated">Affilliated Ad</div>
+        )}
       </div>
       {ctaLabel && (
-        <a className="btn btn-primary" href={href}>{ctaLabel}</a>
+        <div className="btn btn-primary mb-sm-responsive">{ctaLabel}</div>
       )}
-    </div>
+    </a>
   );
 }

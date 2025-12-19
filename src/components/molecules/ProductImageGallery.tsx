@@ -164,7 +164,7 @@ export default function ProductImageGallery({
           aria-label="Previous image"
           disabled={active === 0}
         >
-          ‹
+          <img src={"/images/icon-chevron-left.svg"} alt="" aria-hidden />
         </button>
         <button
           type="button"
@@ -173,12 +173,12 @@ export default function ProductImageGallery({
           aria-label="Next image"
           disabled={active === imgs.length - 1}
         >
-          ›
+          <img src={"/images/icon-chevron-right.svg"} alt="" aria-hidden />
         </button>
       </div>
 
       {/* Thumbnails */}
-      <div className="gallery__thumbs" role="tablist" aria-label="Image thumbnails">
+      <div className="gallery__thumbs mt-md-responsive" role="tablist" aria-label="Image thumbnails">
         {imgs.map((img, i) => (
           <button
             type="button"
@@ -200,9 +200,9 @@ export default function ProductImageGallery({
 
       {/* Fullscreen modal */}
       {isModalOpen && (
-        <div className="gallery__modal" role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
+        <div className="gallery__modal " role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
           <button className="modal__backdrop" onClick={() => setModalOpen(false)} aria-label="Close viewer" />
-          <div className="modal__content">
+          <div className="modal__content pt-md-responsive">
             <button className="modal__close" onClick={() => setModalOpen(false)} aria-label="Close">✕</button>
             <div className="modal__image">
               <picture>

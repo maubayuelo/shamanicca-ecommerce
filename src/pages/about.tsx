@@ -19,15 +19,16 @@ export default function AboutPage() {
           <section className="main-condensed  content">
             
             <div className="page mt-md-responsive mb-lg-responsive">
+              
               <Breadcrumb
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'About' },
-            ]}
-            className="breadcrumb"
-            ariaLabel="Breadcrumb"
-          />
-              <h1 className='type-5xl type-extrabold type-center'>About Shamanicca</h1>
+                ariaLabel="Breadcrumb"
+                items={[
+                  { label: 'Home', href: '/' },
+                  { label: 'About' },
+                ]}
+              />
+                              
+                              <h1 className='type-5xl type-extrabold type-center'>About Shamanicca</h1>
               <div className="page-image-wrapper">
                 <img
                   src="https://placehold.co/914x548.png"

@@ -24,7 +24,11 @@
 		scroll-snap-align: start;
 	}
 
-	.gallery__image-wrapper { position: relative; @include responsive-border-radius; overflow: hidden; }
+	.gallery__image-wrapper {
+		position: relative;
+		@include responsive-border-radius;
+		overflow: hidden;
+	}
 
 	.image-button {
 		padding: 0;
@@ -33,68 +37,146 @@
 		cursor: zoom-in;
 		display: block;
 		width: 100%;
-		img { width: 100%; height: auto; display: block; }
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
 	}
 
 	.badge {
 		&.badge--sale {
 			position: absolute;
-			top: 12px; left: 12px;
+			top: 12px;
+			left: 12px;
 			background: $highlighted-color; // previously #e11d48
-            //font-weight: $font-weight-medium;
-            //letter-spacing: 0.04em;
-			padding: 6px 10px; border-radius: 4px;
+			//font-weight: $font-weight-medium;
+			//letter-spacing: 0.04em;
+			padding: 6px 10px;
+			border-radius: 4px;
 			z-index: 2;
-            span { color: $white; }
+			span { color: $white; }
 		}
 	}
 
 	.nav {
-		position: absolute; top: 50%; transform: translateY(-50%);
-		width: 38px; height: 38px; border-radius: 999px;
-		border: none; background: rgba(0,0,0,0.45); color: $white;
-		display: none; align-items: center; justify-content: center;
-		cursor: pointer; z-index: 3;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 38px;
+		height: 38px;
+		border-radius: 999px;
+		border: none;
+		background: rgba(0,0,0,0.45);
+		color: $white;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		z-index: 3;
 		&:disabled { opacity: 0.4; cursor: default; }
 		&--prev { left: 8px; }
 		&--next { right: 8px; }
 		@include media-tablet-up { display: inline-flex; }
+		img {
+			width: 9px;
+			height: auto;
+		}
 	}
 
 	.gallery__thumbs {
-		margin-top: 10px;
-		display: grid; grid-auto-flow: column; grid-auto-columns: max-content; gap: 8px;
-		overflow-x: auto; padding-bottom: 4px;
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: max-content;
+		overflow-x: auto;
+		justify-content: start;
+		align-items: start;
+		//gap: 9px;
+		@include media-tablet-up { gap: 9px; }
 	}
+
 	.thumb {
-		border: 2px solid transparent; border-radius: 9px; padding: 0; background: none; cursor: pointer;
+		border: 2px solid transparent;
+		border-radius: 9px;
+		padding: 0;
+		background: none;
+		cursor: pointer;
+		width: fit-content;
+		height: fit-content;
 		&.is-active { border-color: $black; }
-		img { width: 64px; height: 64px; object-fit: cover;  display: block; border-radius: 9px;}
+		img {
+			width: 64px;
+			height: 64px;
+			object-fit: cover;
+			display: block;
+			border-radius: 6px;
+		}
 	}
 
 	// Modal
 	.gallery__modal {
-		position: fixed; inset: 0; z-index: 5000;
+		position: fixed;
+		inset: 0;
+		z-index: 5000;
 
-		.modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.7); width: 100%; height: 100%; border: 0; }
+		.modal__backdrop {
+			position: absolute;
+			inset: 0;
+			background: rgba(0,0,0,0.7);
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
 
-		.modal__content { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr auto; }
+		.modal__content {
+			position: absolute;
+			inset: 0;
+			display: grid;
+			grid-template-rows: auto 1fr auto;
+			justify-content: center;
+		}
 
 		.modal__close {
-			position: absolute; top: 14px; right: 14px;
-			background: rgba(0,0,0,0.6); color: $white; border: 0; border-radius: 999px;
-			width: 36px; height: 36px; cursor: pointer; z-index: 2;
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			background: rgba(0,0,0,0.6);
+			color: $white;
+			border: 0;
+			border-radius: 999px;
+			width: 36px;
+			height: 36px;
+			cursor: pointer;
+			z-index: 2;
 		}
 
 		.modal__image {
-			display: grid; place-items: center; padding: 20px;
-			img { max-width: 95vw; max-height: 70vh; width: auto; height: auto; border-radius: 12px; }
+			display: grid;
+			place-items: center;
+			//padding: 20px;
+			img {
+				max-width: 90vw;
+				max-height: 90vh;
+				width: auto;
+				height: auto;
+				border-radius: 12px;
+			}
 		}
 
 		.modal__thumbs {
-			display: grid; grid-auto-flow: column; gap: 8px; padding: 10px 16px 16px; overflow-x: auto; background: rgba(0,0,0,0.15);
+			width: fit-content;
+    		height: fit-content;
+			display: grid;
+			grid-auto-flow: column;
+			width: 100%;
+			justify-content: center;
+			@include media-tablet-up { gap: 9px; }
+			
+			overflow-x: auto;
+
 			.thumb { border-color: rgba(255,255,255,0.7); }
 			.thumb.is-active { border-color: $white; }
+
 		}
 	}
 }

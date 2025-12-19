@@ -65,12 +65,12 @@ export default function ProductPage() {
             <ProductImageGallery title={title} isOnSale={!!isOnSale} className="product__media" />
 
             <div className="product__details">
-              <h1 className="product__title">{title}</h1>
+              <h1 className="product__title mt-lg-responsive mb-0 type-5xl">{title}</h1>
 
               <div className="product__price" aria-live="polite">
-                {isOnSale && <div className="regular  type-xl">${regularPrice.toFixed(2)}</div>}
-                <div className="current type-lg">${price.toFixed(2)}</div>
-                {isOnSale && <div className="badge-small type-xl">Save ${Math.max(0, regularPrice - price).toFixed(0)}</div>}
+                {isOnSale && <div className="regular  type-2xl">${regularPrice.toFixed(2)}</div>}
+                <div className="current type-2xl">${price.toFixed(2)}</div>
+                {isOnSale && <div className="badge-small type-sm">Save ${Math.max(0, regularPrice - price).toFixed(0)}</div>}
               </div>
 
               <div className="product__desc">

@@ -87,8 +87,14 @@
       gap: $spacing-15;
       align-items: flex-start;
 
-      .price { color: $text-color; }
-      .price-compare { color: $text-color; text-decoration: line-through; opacity: 0.8; }
+      .price {
+        color: $text-color;
+      }
+      .price-compare {
+        color: $text-color;
+        text-decoration: line-through;
+        opacity: 0.8;
+      }
     }
   }
 

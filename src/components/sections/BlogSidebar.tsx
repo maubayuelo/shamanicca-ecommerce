@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import BlogBannerSidebar from './BlogBannerSidebar';
 
 import type { BlogGridItem } from './BlogGrid';
 
@@ -29,7 +30,18 @@ export default function BlogSidebar({ sections = [], banners = [], className = '
         <React.Fragment key={`secfrag-${idx}`}>
           {/* Section */}
           <div className="blog-sidebar__section">
-            <h3 className="type-3xl type-extrabold type-uppercase mt-0 mb-xs-responsive">{section.title}</h3>
+            {idx === Math.floor(sections.length / 2) - 1 && banners[0] && (
+              <BlogBannerSidebar
+                className="mt-sm-responsive mb-sm-responsive"
+                imageUrl={banners[0].imageUrl}
+                title={banners[0].title}
+                subtitle={banners[0].subtitle}
+                ctaLabel={banners[0].ctaLabel}
+                href={banners[0].href}
+              />
+            )}
+
+            <h3 className="type-3xl type-extrabold type-uppercase mt-0">{section.title}</h3>
             <div className="blog-sidebar__list">
               {section.items.map((item) => (
                 <article key={item.id} className="blog-sidebar__row">
@@ -43,25 +55,24 @@ export default function BlogSidebar({ sections = [], banners = [], className = '
                 </article>
               ))}
             </div>
+
+            {idx === Math.floor(sections.length / 2) - 1 && banners[0] && (
+              <BlogBannerSidebar
+                className="mt-sm-responsive"
+                imageUrl={banners[0].imageUrl}
+                title={banners[0].title}
+                subtitle={banners[0].subtitle}
+                ctaLabel={banners[0].ctaLabel}
+                href={banners[0].href}
+                isAffilliated={true}
+              />
+            )}
           </div>
 
-          {/* Insert first banner in the middle between sections */}
-          {idx === Math.floor(sections.length / 2) - 1 && banners[0] && (
-            <a key={`bnr-middle`} href={banners[0].href || '#'} className="blog-sidebar__banner">
-              <div className="blog-sidebar__banner-image rounded-30">
-                <Image src={banners[0].imageUrl} alt={banners[0].title || ''} width={180} height={180} />
-              </div>
-              <div className="blog-sidebar__banner-body">
-                <div className="flex flex-col gap-[3px]">
-                  {banners[0].title && <div className="type-xl type-extrabold">{banners[0].title}</div>}
-                  {banners[0].subtitle && <div className="type-md">{banners[0].subtitle}</div>}
-                </div>
-                {banners[0].ctaLabel && (
-                  <div className="btn btn-primary btn-large self-stretch">{banners[0].ctaLabel}</div>
-                )}
-              </div>
-            </a>
-          )}
+
+        
+
+          
         </React.Fragment>
       ))}
     </aside>

@@ -19,26 +19,20 @@
     //padding-bottom: $spacing-60;
   }
 
-  
 
   &__content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: $spacing-30;
+    //gap: $spacing-30;
 
     @include media-desktop-up {
-      grid-template-columns: minmax(0, 630px) 1fr;
+      grid-template-columns: minmax(0, 720px) 1fr;
       gap: $spacing-60;
       align-items: start;
     }
   }
 
-  &__media {
-    //@include card-base;
-    //border-color: $gray-30;
-    //padding: $spacing-15;
-    //background: $white;
-  }
+  // &__media styles were previously commented; removing empty ruleset for lint compliance.
 
   &__image-wrapper {
     position: relative;
@@ -86,7 +80,7 @@
   &__price {
     display: flex;
     gap: 12px;
-    align-items: baseline;
+    align-items: center;
 
     .current {
       @include heading-style(3xl, extrabold, 3xl);
@@ -102,7 +96,7 @@
       border-radius: 8px;
       background: $primary-color-light;
       color: $primary-color-dark;
-      @include font-style(xs, medium, xs);
+      //@include font-style(xs, medium, xs);
     }
   }
 
@@ -159,7 +153,8 @@
       gap: 10px;
 
       button {
-        width: 36px; height: 36px;
+        width: 36px;
+        height: 36px;
         border-radius: 8px;
         border: 1px solid $gray-40;
         background: $white;

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Breadcrumb from '../../components/molecules/Breadcrumb';
 import BlogGrid, { type BlogGridItem } from '../../components/sections/BlogGrid';
 import BlogSidebar from '../../components/sections/BlogSidebar';
+import BlogBanner from '../../components/sections/BlogBanner';
 import { getAllPosts, getPostBySlug, getPostsByCategory, type BlogPost } from '../../utils/blogPosts';
 
 type PageProps = {
@@ -37,6 +38,7 @@ export default function BlogPostPage({ post, relatedPosts, sidebarSections }: Pa
           <div className="main">
             <div className="blog-layout mt-lg-responsive mb-xl-responsive">
               <div className="blog-content">
+                
                 <Breadcrumb
                   items={[
                     { label: 'Home', href: '/' },
@@ -45,9 +47,15 @@ export default function BlogPostPage({ post, relatedPosts, sidebarSections }: Pa
                   ]}
                 />
 
-                <h1 className="type-5xl type-extrabold mt-xs-responsive mb-xs-responsive">{post.title}</h1>
+                <h1 className="type-5xl type-extrabold mt-xs-responsive mb-0">{post.title}</h1>
+                {post.content && (
+                    <>
+                    <p className="type-2xl">{post.content}</p>
+                    </>
+                    
+                  )}
                 {post.category && (
-                  <div className="type-sm mb-15">
+                  <div className="type-sm mb-md-responsive">
                     Category: <a href={`/blog/category/${encodeURIComponent(post.category)}`}>{post.category}</a>
                   </div>
                 )}
@@ -69,10 +77,87 @@ export default function BlogPostPage({ post, relatedPosts, sidebarSections }: Pa
                   {post.content && (
                     <>
                     <p className="type-paragraph type-medium">{post.content}</p>
+                    </>
+                    
+                  )}
+                  {/* Insert banner component here */}
+                  {banners[0] && (
+                    <div className="my-sm-responsive">
+                      <BlogBanner
+                        title={banners[0].title}
+                        subtitle={banners[0].subtitle}
+                        ctaLabel={banners[0].ctaLabel}
+                        href={banners[0].href}
+                        imageUrl={banners[0].imageUrl}
+                        
+                      />
+                    </div>
+                  )}
+
+                  <iframe
+                    className="post-video mt-md-responsive"
+                    src="https://www.youtube.com/embed/7xJw6eBEJQs?si=MtQTF1dWnaKp70UL"
+                    title="YouTube video player"
+                    frameBorder={0}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+
+                  {post.content && (
+                    <>
+                    <p className="type- type-medium">{post.content}</p>
+                    </>
+                    
+                  )}
+
+
+                  {post.content && (
+                    <>
+                    <p className="type-paragraph type-medium">{post.content}</p>
                     <p className="type-paragraph type-medium">{post.content}</p>
                     <p className="type-paragraph type-medium">{post.content}</p>
                     </>
                     
+                  )}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {post.imageUrl && (
+                    <Image
+                      src={post.imageUrl}
+                      alt=""
+                      width={915}
+                      height={531}
+                      className="mb-xxs-responsive rounded-30"
+                      sizes="(min-width: 1280px) 915px, 100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                      priority={false}
+                    />
+                  )}
+                  {post.content && (
+                    <>
+                    <p className="type-sm type-medium">{post.content}</p>
+                    </>
+                    
+                  )}
+                  {post.content && (
+                    <>
+                    <p className="type-paragraph type-medium">{post.content}</p>
+                    <p className="type-paragraph type-medium">{post.content}</p>
+                    <p className="type-paragraph type-medium">{post.content}</p>
+                    </>
+                    
+                  )}
+                  {banners[0] && (
+                    <div className="my-sm-responsive">
+                      <BlogBanner
+                        title={banners[0].title}
+                        subtitle={banners[0].subtitle}
+                        ctaLabel={banners[0].ctaLabel}
+                        href={banners[0].href}
+                        imageUrl={banners[0].imageUrl}
+                        isAffilliated={true}
+                      />
+                    </div>
                   )}
                 </article>
 

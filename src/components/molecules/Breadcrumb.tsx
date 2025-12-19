@@ -17,7 +17,7 @@ export type BreadcrumbProps = {
 
 export default function Breadcrumb({
   items,
-  className,
+  className='breadcrumb type-xs',
   separator = <span className="sep" aria-hidden="true" />,
   ariaLabel = 'Breadcrumb',
   linkLast = false,

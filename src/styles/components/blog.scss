@@ -11,8 +11,12 @@
     padding: 24px;
   }
 
-  &__title { color: $black; }
-  &__subtitle { color: $black; }
+  &__title {
+    color: $black;
+  }
+  &__subtitle {
+    color: $black;
+  }
 }
 
 .blog-layout {
@@ -68,7 +72,12 @@
   position: relative;
   background-color: $black;
 
-  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 .blog-sidebar__info {
@@ -84,21 +93,37 @@
   background: white;
   overflow: hidden;
   @include responsive-border-radius;
-  outline: 1px $gray-70 solid;
-  outline-offset: -1px;
+  outline: 1px $gray-90 solid;
   justify-content: flex-start;
+
+  // Hover: Change text colors for title/subtitle within sidebar banner
+  &:hover .type-xl,
+  &:hover .type-md {
+    color: $primary-color;
+  }
   align-items: center;
   gap: $spacing-15;
   display: inline-flex;
+
+  &.is-affilliated {
+    background: $gray-20;
+  }
 }
 
 .blog-sidebar__banner-image {
   width: 150px;
-  height: 150px;
+  height: -webkit-fill-available;
   padding: 0px;
   position: relative;
-  img { width: 100%; height: 100%; object-fit: cover; display: block; }
   background-color: $black;
+  
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 .blog-sidebar__banner-body {
@@ -107,6 +132,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 15px 0;
   gap: $spacing-15;
 }
 
@@ -118,31 +144,80 @@
   border: 1px solid $gray-70;
   @include responsive-border-radius;
   overflow: hidden;
+  gap: 0;
+  @include media-tablet-up {
+      gap: $spacing-15;
+    }
+
+  &.is-affilliated {
+    background: $gray-10;
+  }
+
+  // Smooth color transitions for hover
+  &__title,
+  &__subtitle {
+    transition: color 0.2s ease-in-out;
+  }
+
+  // Hover: Change title/subtitle colors on content banner
+  &:hover .blog-banner__title,
+  &:hover .blog-banner__subtitle {
+    color: $primary-color;
+  }
 
   &__image {
     width: 100%;
-    height: 150px;
+    height: 210px;
     position: relative;
     overflow: hidden;
 
-    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
   }
 
-  &__body { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 15px; }
-  &__title { color: $black; }
-  &__subtitle { color: $black; }
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 15px;
+  }
+  &__title {
+    color: $black;
+  }
+  &__subtitle {
+    color: $black;
+  }
 
-  a.btn { margin: 0 15px 15px; align-self: stretch; text-align: center; }
+  .btn {
+    margin: 0 $spacing-15 $spacing-15 $spacing-15;
+    align-self: stretch;
+    text-align: center;
+    @include media-tablet-up {
+      margin: 0;
+      align-self: center;
+    }
+  }
 
   @include media-tablet-up {
     flex-direction: row;
     align-items: center;
-    gap: $spacing-15;
+    gap: $spacing-30;
     padding-right: 15px;
 
-    &__image { width: 270px; height: 150px; flex-shrink: 0; }
-    &__body { padding: 0; }
-    a.btn { margin: 0; align-self: center; }
+    &__image {
+      width: 210px;
+      height: 150px;
+      flex-shrink: 0;
+    }
+    &__body {
+      padding: 0;
+    }
+    
   }
 }
 
@@ -169,8 +244,12 @@
       width: 60%;
       flex-shrink: 0;
     }
-
-    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
   }
 
   &__body {
@@ -182,4 +261,14 @@
       width: 40%;
     }
   }
+}
+
+// Responsive embedded video inside blog content
+.post-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  @include responsive-border-radius;
 }

@@ -13,9 +13,9 @@ export default function BlogMainPage({ posts }: BlogMainPageProps) {
   // Derive layout pieces: first item as main article, then 3 blocks, banners in-between
   const mainArticle = posts[0];
   const remaining = posts.slice(1);
-  const block1 = remaining.slice(0, 4);
-  const block2 = remaining.slice(4, 8);
-  const block3 = remaining.slice(8, 12);
+  const block1 = remaining.slice(0, 6);
+  const block2 = remaining.slice(6, 10);
+  const block3 = remaining.slice(10, 14);
 
 
 
@@ -60,13 +60,7 @@ export default function BlogMainPage({ posts }: BlogMainPageProps) {
             </section>
           )}
 
-          {/* Block 1 (no section title or CTA) */}
-          {block1.length > 0 && (
-            <BlogGrid
-            items={block1}
-            className='mb-lg-responsive'
-            />
-          )}
+          
 
           {/* Banner 1 */}
           <BlogBanner
@@ -78,12 +72,15 @@ export default function BlogMainPage({ posts }: BlogMainPageProps) {
             imageUrl="https://placehold.co/270x180"
           />
 
-          {/* Block 2 */}
-          {block2.length > 0 && (
-            <BlogGrid items={block2} 
+          {/* Block 1 (no section title or CTA) */}
+          {block1.length > 0 && (
+            <BlogGrid
+            items={block1}
             className='mb-lg-responsive'
             />
           )}
+
+          
 
           {/* Banner 2 */}
           <BlogBanner
@@ -93,15 +90,19 @@ export default function BlogMainPage({ posts }: BlogMainPageProps) {
             ctaLabel="LISTEN"
             href="/shop/audios"
             imageUrl="https://placehold.co/270x180"
+            isAffilliated={true}
           />
 
-          {/* Block 3 */}
-          {block3.length > 0 && (
-            <BlogGrid
-            items={block3}
+          {/* Block 2 */}
+          {block2.length > 0 && (
+            <BlogGrid items={block2} 
+            className='mb-lg-responsive'
             ctaHref="/blog"
-            ctaLabel="Check All Blog Posts"/>
+            ctaLabel="Check All Blog Posts"
+            />
           )}
+
+          
         </div>
 
         {/* Sidebar with titles, posts, and banners */}

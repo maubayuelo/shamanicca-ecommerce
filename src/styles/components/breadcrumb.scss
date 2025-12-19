@@ -8,12 +8,12 @@
     flex-direction: row;
     justify-content: flex-start;
     //margin-bottom: $spacing-15;
-    color: $gray-80;
-    @include font-style(sm, bold, sm);
+    color: $black;
+    @include font-style(xm, medium, xm);
     //background-color: red;;
 
     a {
-      color: $gray-80;
+      color: $black;
       text-decoration: none;
 
       &:hover { color: $black; }
@@ -23,7 +23,7 @@
       display: inline-block;
       margin: 0 6px;
       width: 5px; height: 13px;
-      border-left: 1.25px solid $gray-70;
+      border-left: 1.25px solid $black;
       transform: skewX(-15deg);
       opacity: .8;
     }
