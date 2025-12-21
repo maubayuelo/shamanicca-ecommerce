@@ -261,6 +261,18 @@
       width: 40%;
     }
   }
+
+  // Main article title link behavior
+  h1 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  h1 a:hover,
+  h1 a:focus-visible {
+    color: $primary-color;
+  }
 }
 
 // Responsive embedded video inside blog content

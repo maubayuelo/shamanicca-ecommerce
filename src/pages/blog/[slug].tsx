@@ -7,6 +7,7 @@ import Breadcrumb from '../../components/molecules/Breadcrumb';
 import BlogGrid, { type BlogGridItem } from '../../components/sections/BlogGrid';
 import BlogSidebar from '../../components/sections/BlogSidebar';
 import BlogBanner from '../../components/sections/BlogBanner';
+import ArticleShareIcons from '../../components/molecules/ArticleShareIcons';
 import { getAllPosts, getPostBySlug, getPostsByCategory, type BlogPost } from '../../utils/blogPosts';
 
 type PageProps = {
@@ -48,17 +49,20 @@ export default function BlogPostPage({ post, relatedPosts, sidebarSections }: Pa
                 />
 
                 <h1 className="type-5xl type-extrabold mt-xs-responsive mb-0">{post.title}</h1>
+                
                 {post.content && (
                     <>
-                    <p className="type-2xl">{post.content}</p>
+                    <p className="type-2xl mt-sm-responsive mb-0">{post.content}</p>
                     </>
                     
                   )}
                 {post.category && (
-                  <div className="type-sm mb-md-responsive">
+                  <div className="type-sm mb-xs-responsive mt-xs-responsive">
                     Category: <a href={`/blog/category/${encodeURIComponent(post.category)}`}>{post.category}</a>
                   </div>
                 )}
+
+                <ArticleShareIcons articleTitle={post.title} articleUrl={post.href} className="mt-xs-responsive  mb-md-responsive" />
 
                 <article className="">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

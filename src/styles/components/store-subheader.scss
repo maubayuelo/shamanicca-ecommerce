@@ -28,6 +28,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: $spacing-15;
+    @include media-tablet-up {
+    padding-top: 0;
+  }
   }
 
   .toolbar-btn {

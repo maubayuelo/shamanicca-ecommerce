@@ -13,7 +13,12 @@ export type BlogBannerProps = {
 
 export default function BlogBanner({ title, subtitle, ctaLabel, href = '#', imageUrl, className = '', isAffilliated = false }: BlogBannerProps) {
   return (
-    <a href={href} className={`blog-banner${isAffilliated ? ' is-affilliated' : ''} ${className}`}>
+    <a
+      href={href}
+      className={`blog-banner${isAffilliated ? ' is-affilliated' : ''} ${className}`}
+      target={isAffilliated ? '_blank' : undefined}
+      rel={isAffilliated ? 'noopener noreferrer' : undefined}
+    >
       <div className="blog-banner__image">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={imageUrl} alt={title} />
@@ -26,7 +31,14 @@ export default function BlogBanner({ title, subtitle, ctaLabel, href = '#', imag
         )}
       </div>
       {ctaLabel && (
-        <div className="btn btn-primary mb-sm-responsive">{ctaLabel}</div>
+        <div className="btn btn-primary mb-sm-responsive">
+          <span>{ctaLabel}</span>
+          {/* decorative external link icon for affiliated CTA */}
+          {isAffilliated && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src="/images/icon-external-link.svg" alt="" aria-hidden="true" width={20} height={20} />
+          )}
+        </div>
       )}
     </a>
   );

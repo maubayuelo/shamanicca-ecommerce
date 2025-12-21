@@ -1,0 +1,25 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.product-sort {
+  display: inline-flex;
+  align-items: center;
+}
+
+.product-sort__select {
+  min-width: 180px;
+}
+
+/* Optional: align with store subheader toolbar spacing */
+.store-subheader__sort .product-sort__select {
+  // Reuse condensed form control spacing via class, extra alignment if needed
+}
+
+/* Keep visually hidden helper consistent */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}

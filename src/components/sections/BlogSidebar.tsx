@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import BlogBannerSidebar from './BlogBannerSidebar';
+import BlogSidebarCard from '../molecules/BlogSidebarCard';
 
 import type { BlogGridItem } from './BlogGrid';
 
@@ -44,15 +45,7 @@ export default function BlogSidebar({ sections = [], banners = [], className = '
             <h3 className="type-3xl type-extrabold type-uppercase mt-0">{section.title}</h3>
             <div className="blog-sidebar__list">
               {section.items.map((item) => (
-                <article key={item.id} className="blog-sidebar__row">
-                  <a href={item.href || '#'} className="blog-sidebar__thumb rounded-30" aria-label={`Read ${item.title}`}>
-                    <Image src={item.imageUrl || 'https://placehold.co/180x180.png'} alt="" width={180} height={180} loading="lazy" />
-                  </a>
-                  <div className="blog-sidebar__info">
-                    <h3 className="type-xl type-extrabold m-0"><a href={item.href || '#'}>{item.title}</a></h3>
-                    {item.summary && <p className="type-md m-0">{item.summary}</p>}
-                  </div>
-                </article>
+                <BlogSidebarCard key={item.id} item={item} />
               ))}
             </div>
 

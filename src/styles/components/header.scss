@@ -234,6 +234,7 @@
         &__mobile_nav {
             //padding: 12px 16px;
             background-color: $white;
+            border-bottom: 1px solid $black;
         }
 
         .mobile__details {
@@ -326,9 +327,10 @@
         position: fixed;
         left: 0;
         top: var(--header-height, 64px);
-        width: 100%;
+        
         background: $black;
         padding: $spacing-15 $spacing-15;
+        width: calc(100% - $spacing-30);
         z-index: 900; // below the sticky header (header z-index is 1000)
         overflow: hidden;
         // hidden state

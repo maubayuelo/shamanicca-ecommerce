@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useRef, useEffect } from 'react';
+import { useBodyClass } from '../../utils/dom';
 import navigation from '../../utils/navigation';
 
 /**
@@ -20,32 +21,12 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const mobileNavRef = useRef<HTMLElement | null>(null);
-  const bodyOverflowRef = useRef<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const nav = navigation;
   const router = useRouter();
 
-  // Lock body scroll when mobile menu is open. Restore original overflow on close/unmount.
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-
-    // Save original overflow only once
-    if (bodyOverflowRef.current === null) {
-      bodyOverflowRef.current = document.body.style.overflow || '';
-    }
-
-    const shouldLock = mobileOpen || searchOpen;
-    if (shouldLock) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = bodyOverflowRef.current || '';
-    }
-
-    return () => {
-      // On unmount restore original overflow
-      document.body.style.overflow = bodyOverflowRef.current || '';
-    };
-  }, [mobileOpen, searchOpen]);
+  // Unified: toggle a marker class on body when overlays are open (no inline styles)
+  useBodyClass('no-scroll', mobileOpen || searchOpen);
 
   // Focus the input when opening search
   useEffect(() => {
@@ -201,7 +182,7 @@ export default function Header() {
       <hr />
 
       <div className={`header__mobile_menu ${mobileOpen ? 'is-open' : ''}`}>
-        <nav ref={mobileNavRef} className="header__mobile_nav" aria-label="Mobile navigation">
+        <nav ref={mobileNavRef} className="header__mobile_nav pb-sm-responsive" aria-label="Mobile navigation">
           {nav.map((item) => (
             <details key={item.id} className="mobile__details" onToggle={handleDetailsToggle}>
               <summary className="mobile__summary">

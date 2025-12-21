@@ -1,0 +1,119 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../typography" as *;
+
+.product-filter {
+  position: fixed;
+  left: 0;
+  top: var(--header-height, 64px);
+  width: 100%;
+  z-index: 950; // above other content, below sticky header
+  pointer-events: none; // inner/backdrop will enable interactivity when open
+  background-color: $white;
+  border-bottom: 1px solid $black;
+
+  // Animation container
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-9px);
+  transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.25s ease;
+
+  &.is-open {
+    max-height: calc(100vh - var(--header-height, 64px));
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &__backdrop {
+    position: fixed;
+    left: 0;
+    top: var(--header-height, 64px);
+    right: 0;
+    bottom: 0;
+    //background: $white;
+    
+  }
+
+  &__inner {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    //gap: $spacing-15;
+    max-width: 900px;
+    padding-right: $spacing-15;
+    padding-left: $spacing-15;
+    background: $white;
+    //border-bottom: 1px solid $black;
+    //box-shadow: 0 6px 18px rgba(25,25,25,0.08);
+    // Disable inner scrolling when overlay is open
+    overflow: hidden;
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $white;
+    padding-bottom: $spacing-10;
+    z-index: 1;
+  }
+
+  &__close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: $spacing-15;
+    height: $spacing-15;
+    img { height: 15px; width: 15px; filter: invert(1); }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-15;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__group {
+    border: 1px solid $gray-40;
+    border-radius: $spacing-10;
+    padding: $spacing-15;
+    legend {
+      @include heading-style(md, bold, md);
+      margin-bottom: $spacing-10;
+    }
+  }
+
+  &__check {
+    display: flex;
+    align-items: center;
+    gap: $spacing-10;
+    margin-bottom: $spacing-10;
+    input[type="checkbox"] {
+      accent-color: $primary-color;
+      margin: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-10;
+    justify-content: flex-end;
+  }
+}
+
+/* A11y utility (scoped) */
+.product-filter .visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}

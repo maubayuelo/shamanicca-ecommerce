@@ -4,6 +4,7 @@ import BlogGrid, { type BlogGridItem } from './BlogGrid';
 import BlogHeader from './BlogHeader';
 import BlogBanner from './BlogBanner';
 import BlogSidebar from './BlogSidebar';
+import BlogMainArticle from './BlogMainArticle';
 
 type BlogMainPageProps = {
   posts: BlogGridItem[];
@@ -45,19 +46,7 @@ export default function BlogMainPage({ posts }: BlogMainPageProps) {
 
           {/* Main Article */}
           {mainArticle && (
-            <section className="blog-main-article mb-lg-responsive">
-              <a href={mainArticle.href || '#'} className="blog-main-article__thumb" aria-label={`Read ${mainArticle.title}`}>
-                {/* large image, rely on CSS height */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={mainArticle.imageUrl || 'https://placehold.co/915x531.png'} alt="" />
-              </a>
-              <div className="blog-main-article__body">
-                <h1 className="type-2xl type-extrabold m-0">
-                  <a href={mainArticle.href || '#'} style={{ textDecoration: 'none', color: 'inherit' }}>{mainArticle.title}</a>
-                </h1>
-                {mainArticle.summary && <p className="type-md m-0">{mainArticle.summary}</p>}
-              </div>
-            </section>
+            <BlogMainArticle item={mainArticle} />
           )}
 
           

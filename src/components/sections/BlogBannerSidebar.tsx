@@ -21,7 +21,12 @@ export default function BlogBannerSidebar({
   isAffilliated = false
 }: BlogBannerSidebarProps) {
   return (
-    <a href={href} className={`blog-sidebar__banner${isAffilliated ? ' is-affilliated' : ''} ${className}`}>
+    <a
+      href={href}
+      className={`blog-sidebar__banner${isAffilliated ? ' is-affilliated' : ''} ${className}`}
+      target={isAffilliated ? '_blank' : undefined}
+      rel={isAffilliated ? 'noopener noreferrer' : undefined}
+    >
       <div className="blog-sidebar__banner-image">
         <Image src={imageUrl} alt={title || ''} width={180} height={180} />
       </div>
@@ -34,7 +39,13 @@ export default function BlogBannerSidebar({
         )}
         </div>
         {ctaLabel && (
-          <div className="btn btn-primary btn-large self-stretch">{ctaLabel}</div>
+          <div className="btn btn-primary btn-large self-stretch">
+            <span>{ctaLabel}</span>
+            {isAffilliated && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src="/images/icon-external-link.svg" alt="" aria-hidden="true" width={20} height={20} />
+            )}
+          </div>
         )}
       </div>
     </a>

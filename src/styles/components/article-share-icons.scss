@@ -1,0 +1,83 @@
+@use "../variables" as *;
+
+.article-share-icons {
+  ul {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-10;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: $black;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease-in-out;
+  }
+
+  /* Wrapper: black rounded background */
+  .share-icon-wrap {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $black;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  /* Glyph: white masked icon centered inside wrapper */
+  .share-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-color: $white; // invert: white glyph on black bg
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+
+  /* Icon sources via masks (use new filenames) */
+  .share-icon--x {
+    -webkit-mask-image: url('/images/icon-social-x.svg');
+    mask-image: url('/images/icon-social-x.svg');
+  }
+  .share-icon--fb {
+    -webkit-mask-image: url('/images/icon-social-fb.svg');
+    mask-image: url('/images/icon-social-fb.svg');
+  }
+  .share-icon--whatsapp {
+    -webkit-mask-image: url('/images/icon-social-whatsapp.svg');
+    mask-image: url('/images/icon-social-whatsapp.svg');
+  }
+  .share-icon--telegram {
+    -webkit-mask-image: url('/images/icon-social-telegram.svg');
+    mask-image: url('/images/icon-social-telegram.svg');
+  }
+  .share-icon--tt {
+    -webkit-mask-image: url('/images/icon-social-tt.svg');
+    mask-image: url('/images/icon-social-tt.svg');
+  }
+  .share-icon--email {
+    -webkit-mask-image: url('/images/icon-email.svg');
+    mask-image: url('/images/icon-email.svg');
+  }
+  .share-icon--link {
+    -webkit-mask-image: url('/images/icon-link.svg');
+    mask-image: url('/images/icon-link.svg');
+  }
+
+  /* Hover: primary background with white glyph stays visible */
+  a:hover .share-icon-wrap,
+  a:focus-visible .share-icon-wrap {
+    background-color: $primary-color;
+  }
+}

@@ -14,6 +14,9 @@
 @use "./components/product-img-gallery" as *;
 @use "./components/breadcrumb" as *;
 @use "./components/blog" as *;
+@use "./components/article-share-icons" as *;
+@use "./components/product-sort" as *;
+@use "./components/product-filter" as *;
 @use "./forms" as *;
 
 // Global SCSS (custom variables)
@@ -31,6 +34,12 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    // Marker class toggled by overlays; does not lock scroll by itself
+    &.no-scroll {
+        // intentionally no overflow rules; use as a hook for theming/analytics
+        overflow: hidden;
+    }
 
     .main {
         margin: 0 auto;

@@ -75,6 +75,13 @@
     h3 a {
       color: inherit;
       text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    // Match sidebar behavior: primary color on hover/focus
+    h3 a:hover,
+    h3 a:focus-visible {
+      color: $primary-color;
     }
   }
 
